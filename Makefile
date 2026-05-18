@@ -1,13 +1,14 @@
 SHELL := /usr/bin/env bash
 
 deps:
-	cask
+	eask install-deps --dev
 
 generate: deps
-	@echo "Generating..."
+	@echo "Generating docs..."
 
-	@cask emacs -Q --batch \
+	@eask emacs -Q --batch \
 		-L ../ \
+		-L ../clients \
 		-l lsp-doc.el \
 		-f lsp-doc-generate
 
